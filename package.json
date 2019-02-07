@@ -35,7 +35,7 @@
     "webpack-dev-server": "^3.1.12"
   },
   "scripts": {
-    "build:dev": "webpack",
+    "build:dev": "webpack --env development",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server --env development",
     "test": "jest --config=jest.config.json --watch"
