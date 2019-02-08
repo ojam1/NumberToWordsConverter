@@ -8,88 +8,38 @@ export default class MainPage extends Component {
     };
   }
 
+  createButton(number, letters) {
+    return (
+      <button
+        type='button'
+        className='btn btn-outline-primary m-1 mw-33 rounded-circle'
+        onClick={() => this.setState({ text: this.state.text + number})}
+      >{number} {letters}</button>
+    )
+  }
+
   render() {
     return (
       <div className='d-flex align-items-center flex-column'>
         <h4 className='h4'>
         {this.state.text}</h4>
         <div className='pb-1'>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 mw-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '1' })}
-          >
-            1
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '2' })}
-          >
-            2 abc
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '3' })}
-          >
-            3 def
-          </button>
+          {this.createButton(1)}
+          {this.createButton(2, 'abc')}
+          {this.createButton(3, 'def')}
         </div>
         <div className='pb-1'>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '4' })}
-          >
-            4 ghi
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '5' })}
-          >
-            5 jkl
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '6' })}
-          >
-            6 mno
-          </button>
+          {this.createButton(4, 'ghi')}
+          {this.createButton(5, 'jkl')}
+          {this.createButton(6, 'mno')}
         </div>
         <div className='pb-1'>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '7' })}
-          >
-            7 pqrs
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '8' })}
-          >
-            8 tuv
-          </button>
-          <button
-            type='button'
-            className='btn btn-outline-primary m-1 w-33 rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '9' })}
-          >
-            9 wxyz
-          </button>
+          {this.createButton(7, 'pqrs')}
+          {this.createButton(8, 'tuv')}
+          {this.createButton(9, 'wxyz')}
         </div>
-        <div>
-          <button
-            type='button'
-            className='btn btn-outline-primary rounded-circle'
-            onClick={() => this.setState({ text: this.state.text + '0' })}
-          >
-            0
-          </button>
+        <div className='pb-1'>
+          {this.createButton(0)}
         </div>
       </div>
     );
