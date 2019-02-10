@@ -4,4 +4,8 @@
 
 Ensure the [Api](https://github.com/ojam1/Api) is running when you use the app.
 
+clone the repo then run `npm install`
+
+start the app using `npm run dev-server`
+
 [link to the app](https://number-to-word-converter.herokuapp.com/)
