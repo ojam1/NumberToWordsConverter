@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
-import wordReducer from '../reducers/songs';
+import wordReducer from '../reducers/word';
 
 export default () => {
   const store = createStore(
