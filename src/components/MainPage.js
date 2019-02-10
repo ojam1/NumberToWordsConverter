@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { storeNumbers } from '../actions/numbersToProcess';
 import { allWords } from '../actions/words';
 
 class MainPage extends Component {
@@ -14,8 +13,8 @@ class MainPage extends Component {
   }
 
   render() {
-    const { storeNumbers } = this.props;
-    const { numbers } = this.state
+    const { allWords } = this.props;
+    const { numbers } = this.state;
 
     return (
       <div className='d-flex align-items-center flex-column'>
@@ -107,7 +106,7 @@ class MainPage extends Component {
         <NavLink
           className='btn btn-primary m-5 p-2 w-75'
           onClick={() => {
-            storeNumbers(numbers);
+            allWords(numbers);
           }}
           to='/words'
         >
@@ -120,5 +119,5 @@ class MainPage extends Component {
 
 export default connect(
   null,
-  { storeNumbers }
+  { allWords }
 )(MainPage);
