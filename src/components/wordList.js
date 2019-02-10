@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { resetWordState } from '../actions/words';
+
 class WordList extends Component {
   constructor(props) {
     super(props)
@@ -34,7 +36,7 @@ class WordList extends Component {
         <div className='pre-scrollable'>
           {this.renderWordList()}
         </div>
-        <NavLink className='btn btn-primary m-5 p-2 w-75'to='/'>
+        <NavLink className='btn btn-primary m-5 p-2 w-75' onClick={() => {resetWordState()}} to='/'>
           Go Back
         </NavLink>
       </div>
@@ -50,4 +52,5 @@ const mapStatetoProps = state => {
 
 export default connect(
   mapStatetoProps,
+  { resetWordState }
 )(WordList);
