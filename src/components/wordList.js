@@ -14,13 +14,14 @@ class WordList extends Component {
 
     let jsx;
 
-    if (word[0] === 'initial_state')
+    if (this.apiRetrievedWords())
       jsx = <h1 className='display-2'>waiting for api</h1>;
 
-    if (word.length == 0)
+    if (this.apiReturnedNoWords())
      jsx = <h1 className='display-2'>no words</h1>;
 
-     if (word.length > 0 && word[0] !== 'initial_state')  jsx = word.map(x => (
+     if (this.apiReturnedWords())
+      jsx = word.map(x => (
       <h1 className='display-2'>{x}</h1>
     ));
 
@@ -41,6 +42,20 @@ class WordList extends Component {
         </NavLink>
       </div>
     );
+  }
+
+  apiRetrievedWords() {
+    return this.props.word[0] === 'initial_state';
+  }
+
+  apiReturnedNoWords() {
+    return this.props.word.length == 0
+  }
+
+  apiReturnedWords() {
+    const { word } = this.props;
+
+    return word.length > 0 && word[0] !== 'initial_state'
   }
 }
 
