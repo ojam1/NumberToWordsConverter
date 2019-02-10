@@ -3,18 +3,38 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 class WordList extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
-    render() {
+  renderWordList() {
+    const { word } = this.props;
+
+    let jsx;
+
+    if (word[0] === 'initial_state')
+      jsx = <h1 className='display-2'>waiting for api</h1>;
+
+    if (word.length == 0)
+     jsx = <h1 className='display-2'>no words</h1>;
+
+     if (word.length > 0 && word[0] !== 'initial_state')  jsx = word.map(x => (
+      <h1 className='display-2'>{x}</h1>
+    ));
+
+    return jsx;
+  }
+
+  render() {
+    const { resetWordState } = this.props;
+
     return (
       <div className='d-flex align-items-center flex-column'>
         <h1 className='display-4 text-center'>Words</h1>
         <div className='pre-scrollable'>
-          <h1>Words</h1>
+          {this.renderWordList()}
         </div>
-        <NavLink className='btn btn-primary m-5 p-2 w-75' onClick={() => {resetWordState()}} to='/'>
+        <NavLink className='btn btn-primary m-5 p-2 w-75'to='/'>
           Go Back
         </NavLink>
       </div>
@@ -22,6 +42,12 @@ class WordList extends Component {
   }
 }
 
+const mapStatetoProps = state => {
+  return {
+    word: state.word
+  };
+};
+
 export default connect(
-  null, null
+  mapStatetoProps,
 )(WordList);
