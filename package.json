@@ -1,5 +1,8 @@
 {
   "name": "number_to_words",
+  "engines": {
+    "node": "8.10.0"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,6 +42,7 @@
   "scripts": {
     "build:dev": "webpack --env development",
     "build:prod": "webpack -p --env production",
+    "heroku-postbuild": "npm run build:prod",
     "dev-server": "webpack-dev-server --env development",
     "test": "jest --config=jest.config.json --watch"
   }
