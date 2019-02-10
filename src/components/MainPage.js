@@ -18,6 +18,9 @@ class MainPage extends Component {
 
     return (
       <div className='d-flex align-items-center flex-column'>
+        <h1 className='display-4 text-center pb-3 m-1'>
+          Convert any number to a list of words using the number pad below
+        </h1>
         <h1 className='display-4 mt-1 pt-1'>{numbers}</h1>
         <div className='d-flex flex-row'>
           <div className='d-flex flex-column pb-1'>
