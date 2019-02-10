@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import configureStore from './store/configureStore';
-import MainPage from './components/MainPage';
+import AppRouter from './router/appRouter';
 
 const store = configureStore();
 
@@ -14,10 +14,9 @@ const jsx = (
         Number To Word Converter
       </h1>
       <h1 className='display-4 text-center pb-3 m-1'>
-        Convert any number to a list of words using the number pad below... (or
-        a random assignment of characters)
+        Convert any number to a list of words using the number pad below
       </h1>
-      <MainPage />
+      <AppRouter />
     </div>
   </Provider>
 );

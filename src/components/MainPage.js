@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import { storeNumbers } from '../actions/numbersToProcess';
 import { allWords } from '../actions/words';
@@ -103,13 +104,15 @@ class MainPage extends Component {
             </button>
           </div>
         </div>
-        <button
-          type='button'
+        <NavLink
           className='btn btn-primary m-5 p-2 w-75'
-          onClick={() => storeNumbers(numbers)}
+          onClick={() => {
+            storeNumbers(numbers);
+          }}
+          to='/words'
         >
           Submit
-        </button>
+        </NavLink>
       </div>
     );
   }
