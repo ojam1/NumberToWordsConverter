@@ -1,4 +1,4 @@
-import reducer from '../../reducers/word';
+import reducer from '../../reducers/words';
 import { FETCH_WORDS } from '../../actions/types';
 
 describe('words reducer', () => {
