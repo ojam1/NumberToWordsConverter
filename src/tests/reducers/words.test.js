@@ -3,7 +3,10 @@ import { FETCH_WORDS, RESET_WORD_STATE } from '../../actions/types';
 
 describe('words reducer', () => {
   it('should return initial state', () => {
-    expect(reducer(undefined, {})).toEqual(['initial_state']);
+    expect(reducer(undefined, {})).toEqual({
+      apiData: [],
+      apiLoaded: false
+    });
   });
 
   it('should handle FETCH_WORDS', () => {
@@ -15,17 +18,23 @@ describe('words reducer', () => {
           payload: 'any'
         }
       )
-    ).toEqual('any');
+    ).toEqual({
+      apiData: 'any',
+      apiLoaded: true
+    });
   });
 
   it('should handle RESET_WORD_STATE', () => {
     expect(
       reducer(
-        ['initial_state'],
+        {},
         {
           type: RESET_WORD_STATE
         }
       )
-    ).toEqual(['initial_state']);
+    ).toEqual({
+      apiData: [],
+      apiLoaded: false
+    });
   });
 });

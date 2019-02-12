@@ -1,11 +1,17 @@
 import { FETCH_WORDS, RESET_WORD_STATE } from '../actions/types';
 
-const INITIAL_STATE = ["initial_state"];
+const INITIAL_STATE = {
+  apiData: [],
+  apiLoaded: false
+};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_WORDS:
-      return action.payload;
+      return {
+        apiData: action.payload,
+        apiLoaded: true
+      }
     case RESET_WORD_STATE:
       return INITIAL_STATE;
     default:
