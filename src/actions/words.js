@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_WORDS, RESET_WORD_STATE } from './types';
 
-const url = 'http://localhost:3000/digits';
+const url = 'https://number-to-word-converter-api.herokuapp.com/digits';
 
 export const allWords = numbers => dispatch => {
   axios
