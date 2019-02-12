@@ -6,24 +6,21 @@ import { resetWordState } from '../actions/words';
 
 class WordList extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   renderWordList() {
-    const { word } = this.props;
+    const { apiData, apiLoaded } = this.props.word;
 
     let jsx;
 
-    if (this.apiRetrievedWords())
-      jsx = <h1 className='display-2'>waiting for api</h1>;
+    if (!apiLoaded) jsx = <h1 className='display-2'>waiting for api</h1>;
 
     if (this.apiReturnedNoWords())
-     jsx = <h1 className='display-2'>no words</h1>;
+      jsx = <h1 className='display-2'>no words</h1>;
 
-     if (this.apiReturnedWords())
-      jsx = word.map(x => (
-      <h1 className='display-2'>{x}</h1>
-    ));
+    if (this.apiReturnedWords())
+      jsx = apiData.map(word => <h1 className='display-2'>{word}</h1>);
 
     return jsx;
   }
@@ -34,28 +31,28 @@ class WordList extends Component {
     return (
       <div className='d-flex align-items-center flex-column'>
         <h1 className='display-4 text-center'>Words</h1>
-        <div className='pre-scrollable'>
-          {this.renderWordList()}
-        </div>
-        <NavLink className='btn btn-primary m-5 p-2 w-75' onClick={() => {resetWordState()}} to='/'>
+        <div className='pre-scrollable'>{this.renderWordList()}</div>
+        <NavLink
+          className='btn btn-primary m-5 p-2 w-75'
+          onClick={() => {
+            resetWordState();
+          }}
+          to='/'
+        >
           Go Back
         </NavLink>
       </div>
     );
   }
 
-  apiRetrievedWords() {
-    return this.props.word[0] === 'initial_state';
-  }
-
   apiReturnedNoWords() {
-    return this.props.word.length == 0
+    const { apiData, apiLoaded } = this.props.word;
+
+    return apiData.length == 0 && apiLoaded;
   }
 
   apiReturnedWords() {
-    const { word } = this.props;
-
-    return word.length > 0 && word[0] !== 'initial_state'
+    return this.props.word.apiData.length > 0;
   }
 }
 
